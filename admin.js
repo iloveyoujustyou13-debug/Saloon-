@@ -147,4 +147,58 @@ function saveAllSettings() {
         hairstyles: hairstyles
     };
     
-    localStorage
+    localStorage.setItem("eSalonAdminFullConfig", JSON.stringify(fullConfig));
+    alert("✅ Settings saved successfully! Front page will reflect changes.");
+}
+
+// Add new hairstyle
+document.getElementById("addHairstyleBtn")?.addEventListener("click", () => {
+    hairstyles.push({
+        id: "new_" + Date.now(),
+        name: "New Style",
+        price: 100,
+        emoji: "✨"
+    });
+    renderHairstyleList();
+});
+
+// Refresh bookings button
+document.getElementById("refreshBookings")?.addEventListener("click", () => {
+    renderBookingsTable();
+});
+
+// Save settings button
+document.getElementById("saveSettingsBtn")?.addEventListener("click", saveAllSettings);
+
+// Authentication logic
+function unlockAdmin() {
+    const password = adminPasswordInput.value;
+    if (password === ADMIN_PASSWORD) {
+        authOverlay.style.display = "none";
+        adminContent.style.display = "block";
+        loadSavedData();
+        renderBookingsTable();
+    } else {
+        authError.innerText = "Wrong password! Access denied.";
+    }
+}
+
+if (unlockBtn) {
+    unlockBtn.addEventListener("click", unlockAdmin);
+}
+
+if (adminPasswordInput) {
+    adminPasswordInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") unlockAdmin();
+    });
+}
+
+// Logout functionality
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+        authOverlay.style.display = "flex";
+        adminContent.style.display = "none";
+        adminPasswordInput.value = "";
+        authError.innerText = "";
+    });
+}
