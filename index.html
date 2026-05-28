@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>GLOSS & GLAM · E-Salon | Prebook Your Style</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Public Header -->
+        <div class="public-header">
+            <div class="logo">
+                <h1>💇‍♀️ GLOSS & GLAM · E-SALON</h1>
+                <p>prebook your signature transformation — style, color, magic</p>
+            </div>
+            <a href="admin.html" class="admin-link">🔒 Admin Login</a>
+        </div>
+
+        <!-- Hero Banner -->
+        <div id="heroSection" class="hero-banner">
+            <div class="hero-title" id="heroTitle">GLOSS & GLAM · E-SALON</div>
+            <div class="hero-sub" id="heroSub">prebook your signature transformation — style, color, magic</div>
+        </div>
+
+        <div class="main-grid">
+            <!-- LEFT: Customer Photo Customizer -->
+            <div class="customizer-card">
+                <div class="section-title">
+                    📸 Customize your look <span>virtual preview</span>
+                </div>
+                <p>Upload a selfie or use sample, then pick your dream hairstyle — price updates instantly.</p>
+                <div class="photo-canvas-area">
+                    <img id="hairImage" src="https://placehold.co/600x400/FFE3D6/9B6A4E?text=Upload+Your+Photo" alt="Your preview photo">
+                    <div class="upload-buttons">
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                        <button class="btn-outline" id="uploadBtn">📤 Upload photo</button>
+                        <button class="btn-outline" id="samplePhotoBtn">✨ Use sample model</button>
+                    </div>
+                </div>
+                <div class="style-options">
+                    <div style="font-weight: 600; margin-bottom: 8px;">✂️ Choose your hairstyle</div>
+                    <div class="style-grid" id="styleGrid"></div>
+                </div>
+                <div class="price-tag">
+                    <span>💎 Estimated service price</span>
+                    <span class="price-value" id="dynamicPrice">$89</span>
+                </div>
+                <p class="note-text">*Price based on selected style. Final price confirmed at salon.</p>
+            </div>
+
+            <!-- RIGHT: Pre-booking Form -->
+            <div class="booking-card">
+                <div class="section-title" style="font-size: 1.5rem;">📅 Prebook your spot</div>
+                <p>Reserve now — pay at salon</p>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label>Full name *</label>
+                        <input type="text" id="fullname" placeholder="e.g., Emma Watson" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email address *</label>
+                        <input type="email" id="email" placeholder="hello@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone number</label>
+                        <input type="tel" id="phone" placeholder="+1 234 567 890">
+                    </div>
+                    <div class="datetime-row">
+                        <div class="form-group">
+                            <label>Preferred date *</label>
+                            <input type="date" id="prebookDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Time slot *</label>
+                            <select id="timeSlot" required>
+                                <option value="">Select time</option>
+                                <option>10:00 AM</option>
+                                <option>11:30 AM</option>
+                                <option>1:00 PM</option>
+                                <option>2:30 PM</option>
+                                <option>4:00 PM</option>
+                                <option>5:30 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Extra notes (color / cut details)</label>
+                        <textarea rows="2" id="notes" placeholder="Curly blowout, balayage, layers..."></textarea>
+                    </div>
+                    <div class="booking-summary" id="summaryBox">
+                        <strong>✨ your selection</strong><br>
+                        <span id="summaryStyle">Style: not selected</span> • <span id="summaryPricePreview">Price: $--</span>
+                    </div>
+                    <button type="submit" class="btn-book">💅 Confirm prebooking →</button>
+                </form>
+            </div>
+        </div>
+        <footer>
+            🌸 Instant prebooking confirmation | 5% discount on first visit | You'll receive email & SMS reminder
+        </footer>
+    </div>
+    <div id="toastMsg" class="toast-msg">✨ Action complete</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
